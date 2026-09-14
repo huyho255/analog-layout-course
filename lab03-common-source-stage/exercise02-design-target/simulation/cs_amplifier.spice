@@ -1,32 +1,40 @@
-* Lab 03 - Exercise 02 - Common-Source Amplifier
-* IHP SG13G2
+** sch_path: /home/designer/shared/my_project/cms_diode_2.sch
+**.subckt cms_diode_2
+XM1 Vout Vin 0 0 sg13_lv_nmos w=10u l=3.2u ng=1 m=1 mm_ok=1
+C1 Vout 0 100f
+V1 Vin 0 DC 0.45 AC 1
+V2 VDD 0 1.2
+XM2 Vout net1 VDD VDD sg13_lv_pmos w=10u l=3.2u ng=1 m=1 mm_ok=1
+V3 net1 0 0.3
+**** begin user architecture code
 
 .lib cornerMOSlv.lib mos_tt
 
-VDD VDD 0 1.2
-VIN Vin 0 DC 0.45 AC 1
-VBIAS Vbias 0 0.2966127
 
-XM1 Vout Vin 0 0 sg13_lv_nmos
-+ w=10u l=3.2u ng=1 m=1 mm_ok=1
-
-XM2 Vout Vbias VDD VDD sg13_lv_pmos
-+ w=10u l=3.2u ng=1 m=1 mm_ok=1
-
-CL Vout 0 100f
 
 .control
+
 op
+
 print v(vdd)
 print v(vin)
 print v(vbias)
 print v(vout)
-print i(VDD)
-let Ptotal = -v(vdd)*i(VDD)
+
+print i(V2)
+
+let Ptotal = -v(vdd)*i(V2)
 print Ptotal
+
 show all
+
 ac dec 100 1 10G
+
 plot db(vout)
+
 .endc
 
+
+**** end user architecture code
+**.ends
 .end
