@@ -1,7 +1,5 @@
 # Exercise 02 — Common-Source Amplifier Design Target
 
-Design and simulate a CMOS common-source amplifier using the IHP SG13G2 PDK, Xschem, and ngspice.
-
 ## Specifications
 
 - `VDD = 1.2 V`
@@ -15,8 +13,6 @@ Use
 ```text
 Av = -gm1(ro1 || ro2)
 ```
-
-Select `W/L` for M1 and M2, bias the PMOS load so that both devices operate in saturation, verify with `.op` and `.ac`, compare hand calculations with simulation, estimate/extract output resistance, and discuss the gain-bandwidth trade-off.
 
 ## Final design
 
@@ -106,10 +102,6 @@ f3dB ~= 1/(2*pi*Rout*CL)
 ```
 
 gives approximately `13.83 MHz` by hand, while ngspice gives about `11.44 MHz`. The difference is caused by transistor parasitic capacitances in addition to the external `100 fF` load.
-
-## Gain-bandwidth trade-off
-
-Increasing channel length generally increases transistor output resistance and therefore gain. However, a larger output resistance moves the output pole to a lower frequency, reducing bandwidth. The final `L = 3.2 um` sizing was selected to achieve slightly more than `30 dB` gain while maintaining about `11.44 MHz` bandwidth.
 
 ## Simulation file
 
