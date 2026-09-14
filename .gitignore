@@ -1,0 +1,17 @@
+# Xschem / ngspice temporary and generated files
+*.raw
+*.log
+*.out
+*.spiceinit
+
+# KLayout / editor backups
+*~
+*.bak
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Python cache (if scripts are added later)
+__pycache__/
+*.pyc
